@@ -31,33 +31,40 @@ Follow these steps to clone and run the application locally.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kumarshivesh/node-real-estate-management.git
-cd node-real-estate-management
+git clone https://github.com/kumarshivesh/fastapi-real-estate-management.git
+cd fastapi-real-estate-management
 ```
 
-### 2. Install Dependencies
+### 2. Create and activate a virtual environment:
+On Windows (using Git Bash)
+```bash
+python -m venv venv
+source venv/Scripts/activate
+```
+
+### 3. Install the required dependencies:
 
 ```bash
-npm install
+pip install -r requirements.txt
 ```
 
-### 3. Set Up Environment Variables
+### 4. Set up the PostgreSQL database:
 
-Create a `.env` file in the root directory of the project and add the following:
+- Create a new PostgreSQL database.
+- Create a `.env` file in the project root and add your database connection details:
 
 ```bash
 DATABASE_URL=postgres://myuser:mypassword@localhost:5432/real_estate
-PORT=3000
 ```
 
 
-### 4. Run the Application
-
-Start the development server.
+### 5. Run the FastAPI server:
 
 ```bash
-npm start
+uvicorn app.main:app --reload
 ```
+
+The server will start at http://127.0.0.1:8000.
 
 ## App Demo
 
@@ -72,13 +79,13 @@ Here are the next steps you can take to test your API and ensure everything is w
 
 1. Open Postman and create a new request.
 2. Select the Method: Choose `POST` from the dropdown menu.
-3. Enter the URL: Type http://localhost:3000/api/properties/add into the URL field. 
+3. Enter the URL: Type http://127.0.0.1:8000/api/properties/add into the URL field. 
 4. Select `Body` as `raw (JSON)`. Paste the follwing in the `Body`:
 ```
 {
-    "property_name": "Example8 Property",
-    "locality": "Example8 Locality",
-    "owner_name": "Example8 Owner"
+    "property_name": "Example16 Property",
+    "locality": "Example16 Locality",
+    "owner_name": "Example16 Owner"
 }
 ```
 5. Send the Request: Click the "Send" button.
@@ -88,7 +95,7 @@ Here are the next steps you can take to test your API and ensure everything is w
 
 1. Open Postman and create a new request.
 2. Select the Method: Choose `GET` from the dropdown menu.
-3. Enter the URL: Type http://localhost:3000/api/properties/fetch?locality_id=property_id into the URL field. Replace `property_id` with an actual property_id. 
+3. Enter the URL: Type http://127.0.0.1:8000/api/properties/fetch?locality_id=locality_id into the URL field. Replace `locality_id` with an actual locality_id. 
 4. Select `Body` as `none`.
 5. Send the Request: Click the "Send" button.
 6. View the Response: Verify the response.
@@ -97,13 +104,13 @@ Here are the next steps you can take to test your API and ensure everything is w
 
 1. Open Postman and create a new request.
 2. Select the Method: Choose `PUT` from the dropdown menu.
-3. Enter the URL: Type http://localhost:3000/api/properties/update into the URL field.
+3. Enter the URL: Type http://127.0.0.1:8000/api/properties/update into the URL field.
 4. Select `Body` as `raw (JSON)`. Paste the follwing in the `Body`:
 ```
 {
-    "property_id": 8,
-    "locality_id": 8,
-    "owner_name": "Updated Example8 Owner"
+    "property_id": 16,
+    "locality_id": 16,
+    "owner_name": "Updated Example16 Owner"
 }
 ```
 5. Send the Request: Click the "Send" button.
@@ -113,11 +120,11 @@ Here are the next steps you can take to test your API and ensure everything is w
 
 1. Open Postman and create a new request.
 2. Select the Method: Choose `DELETE` from the dropdown menu.
-3. Enter the URL: Type http://localhost:3000/api/properties/delete into the URL field.
+3. Enter the URL: Type http://127.0.0.1:8000/api/properties/delete into the URL field.
 4. Select `Body` as `raw (JSON)`. Paste the follwing in the `Body`:
 ```
 {
-    "property_id": 8
+    "property_id": 16
 }
 ```
 5. Send the Request: Click the "Send" button.
@@ -127,7 +134,7 @@ Here are the next steps you can take to test your API and ensure everything is w
 
 1. Open Postman and create a new request.
 2. Select the Method: Choose `GET` from the dropdown menu.
-3. Enter the URL: Type http://localhost:3000/api/localities/all into the URL field. 
+3. Enter the URL: Type http://127.0.0.1:8000/api/localities/all into the URL field. 
 4. Select `Body` as `none`.
 5. Send the Request: Click the "Send" button.
 6. View the Response: Verify the response.
@@ -137,7 +144,9 @@ Here are the next steps you can take to test your API and ensure everything is w
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgements
-[Node.js](https://nodejs.org/en)
-[express.js](https://expressjs.com/)
+[FastAPI](https://fastapi.tiangolo.com/)
+[SQLAlchemy](https://www.sqlalchemy.org/)
+[Uvicorn](https://www.uvicorn.org/)
+[Pydantic](https://docs.pydantic.dev/)
 
 
